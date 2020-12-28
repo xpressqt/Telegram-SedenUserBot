@@ -25,11 +25,11 @@ from sedenecem.core import (
     PyroConversation,
     sticker_resize as resizer)
 # ================= CONSTANT =================
-DIZCILIK = [get_translation(f'kangstr{i+1}') for i in range(0, 12)]
+DIZCILIK = [get_translation(f'kangstr{i+1}') for i in range(0, 13)]
 # ================= CONSTANT =================
 
 
-@sedenify(pattern='^.(d[ıi]zla|kang)', compat=False)
+@sedenify(pattern='^.(ben[ıi]mol|kang)', compat=False)
 def kang(client, message):
     myacc = me[0]
     kanger = myacc.username or myacc.first_name
@@ -63,8 +63,8 @@ def kang(client, message):
 
     pack = 1 if not str(args).isdigit() else int(args)
 
-    pname = f'a{myacc.id}_by_{myacc.username}_{pack}'
-    pnick = f"{kanger}'s UserBot pack {pack}"
+    pname = f'belali_pack_{pack}'
+    pnick = f'OgiWorld - belali {pack}'
 
     limit = '50' if anim else '120'
 
@@ -131,7 +131,7 @@ def kang(client, message):
         else:
             create_new(conv, pack)
 
-    edit(message, get_translation('stickerAdded', ['`', pname]))
+    edit(message, get_translation('stickerAdded', [pname]))
 
 
 def send_recv(conv, msg, doc=False):
