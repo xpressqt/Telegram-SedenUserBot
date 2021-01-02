@@ -195,20 +195,6 @@ ENV_RESTRICTED_KEYS = [
     'DATABASE_URL']
 
 
-def load_brain():
-    if path.exists('learning-data-root.check'):
-        remove('learning-data-root.check')
-    URL = 'https://raw.githubusercontent.com/NaytSeyd/'\
-          'databasescape/master/learning-data-root.check'
-    with open('learning-data-root.check', 'wb') as load:
-        load.write(get(URL).content)
-    DB = connect('learning-data-root.check')
-    CURSOR = DB.cursor()
-    CURSOR.execute('SELECT * FROM BRAIN1')
-    ALL_ROWS = CURSOR.fetchall()
-    for i in ALL_ROWS:
-        BRAIN.append(i[0])
-    DB.close()
 
 
 def load_bl():
@@ -227,7 +213,7 @@ def load_bl():
     DB.close()
 
 
-load_brain()
+
 load_bl()
 
 me = []
